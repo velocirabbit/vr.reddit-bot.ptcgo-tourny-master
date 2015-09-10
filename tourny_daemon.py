@@ -32,20 +32,21 @@ class TDaemon:
     '''
       Initializes the daemon's settings.
     '''
+    self.t = None
+    self.r = self._newReddit()
+    
     self.q = queue.Queue()
-    self.d = thrd.Thread(target = self._worker)
+    self.d = thrd.Thread(target = self._worker, name = "daemon")
     self.d.daemon = True
     self.d.start()
     
-    self.watcher = thrd.Thread(target = self._eventWatcher)
+    self.watcher = thrd.Thread(target = self._eventWatcher, name = "watcher")
     self.watcher.daemon = True
     self.watcher.start()
     
     self.answerQ = queue.Queue()
     
-    self.r = self._newReddit()
-    
-    if os.path.isfile(os.path.join('docs', 'status.txt'):
+    if os.path.isfile(os.path.join('docs', 'status.txt')):
       self.q.put(self._loadTQ())
 
   ##############################################################################
@@ -118,7 +119,8 @@ class TDaemon:
     '''
       Q method for saveT()
     '''
-    with open.path.j
+    pass#with open(os.path.join('docs', 'status.txt'), 'w') as f:
+      #f.write()
     
   def _loadTQ(self):
     '''
@@ -152,9 +154,9 @@ class TDaemon:
     '''
     while True:
       now = datetime.datetime.now(TZ_OFFSET)
-      if self.t.startdt >= now and not self.t.started: self.q.put(self.startT)
+      if self.t != None:
+        if self.t.startdt >= now and not self.t.started: self.q.put(self.startT)
       
-    
   def _worker(self):
     '''
       Worker function put inside of a new Thread and given queue q of tasks.

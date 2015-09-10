@@ -14,7 +14,9 @@ strMenuTourny = """    S - View current tournament status
     Q - Quit bot"""
 strCreateTournyName = """    Hello there! Glad to meet you! Welcome to the /r/ PTCGO Tournament Manager! I'll be helping you manage your next tournament. At any time during this tournament setup, you can press 'Esc' to cancel and return to the main menu.
 
-    But first, tell me a little about the tournament you're planning. Now tell me: what will the tournament's name be? (name will be formatted as "[name] Tournament")"""
+    But first, tell me a little about the tournament you're planning. Now tell me: what will the tournament's name be? (name will be formatted as "[name] Tournament")
+    
+            """
 strCreateTournyNameConfirm = "    Right... So the tournament name is {} Tournament? (y/n)"
 strCreateTournyStartDate = "    {} is a nice name! And when should this tournament start? You can press 't' to jump to today's date."
 strCreateTournyStartTime = "    What about the start time?"

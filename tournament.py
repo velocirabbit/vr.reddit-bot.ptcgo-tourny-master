@@ -1,5 +1,5 @@
 import datetime
-import formats
+#import formats
 import time
 
 from config_bot import TZ_OFFSET
@@ -17,7 +17,6 @@ class Tournament:
     maxplayers: The maximum number of players allowed. 0 for no max. [Int]
     winner: [String] of the name of the tournament's winner. Typically empty
       until after the tournament has ended.
-    tdaemon: [tourny_daemon.TDaemon] with a queue
   '''
   def __init__(self, name, startdt = datetime.datetime.now(TZ_OFFSET),
                rlength = datetime.timedelta(days = 7), maxplayers = 0, 
@@ -40,7 +39,6 @@ class Tournament:
     self.maxplayers = maxplayers
     self.started = started
     self.winner = ''
-    self.tdaemon = tourny_daemon.TDaemon(self)
 
   def save(self):
     '''
